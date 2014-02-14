@@ -1,2 +1,8 @@
 <h1> Pick your station! </h1>
 
+<h2> Journal Square inbound Mon-Fri</h2>
+<ul>
+  <% @arrivals.each do |arrival| %>
+  <li><%= arrival[:arrive_time] %></li>
+  <% end %>
+</ul>
