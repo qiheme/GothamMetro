@@ -1,0 +1,22 @@
+<h1> Pick your station! </h1>
+
+<%= form_for @arrivals url: points_path do |f| %>
+  <p>
+    <%= f.label :station %><br>
+    <%= f.text_field :stop %>
+  </p>
+
+  <p>
+    <%= f.label :direction %><br>
+    <%= f.text_field :direction %>
+  </p>
+
+   <p>
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

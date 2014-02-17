@@ -1,7 +1,8 @@
 GothamMetro::Application.routes.draw do
-  get '/welcome', to: 'welcome#index'
+  # get '/welcome', to: 'welcome#index'
 
-  get '/points', to: 'points#show'
+  get '/points', to: 'points#index'
+  post '/points', to: 'points#stop_times'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

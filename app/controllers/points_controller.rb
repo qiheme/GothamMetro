@@ -1,6 +1,14 @@
 class PointsController < ApplicationController
-  def show
-    @arrivals = get_arrivals "Journal Square", "inbound", "Mon-Fri"
+  # def show
+  #   @arrivals = get_arrivals
+  # end
+
+  def stop_times
+    stop = :stop_form(params[:stop])
+    direction = :stop_form(params[:direction])
+    date = :stop_form(params[:date])
+    @arrivals = get_arrivals ( stop, direction, date )
+    render(:stops)
   end
 
   private
