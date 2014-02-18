@@ -1,10 +1,15 @@
 class PointsController < ApplicationController
+
+  def schedule
+    @schedule = @sorted_times
+  end
+
+
   def show
-    @arrivals = get_arrivals( "Journal Square","inbound", "Mon-Fri")
+    @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
     arrive_times = []
     @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
     @sorted_times = arrive_times.sort
-    binding.pry
   end
 
   private
@@ -17,12 +22,11 @@ class PointsController < ApplicationController
     get_all_arrivals.select {|arrival| arrival[:stop] == stop}
             .select {|arrival| arrival[:direction] == direction}
             .select {|arrival| arrival[:date] == date}
-# arrival_times = arrival_time_array.sort
-            # .sort_by {|arrival| arrival[:arrival_time]} # FIXME not sorting, create user story
   end
 
   def get_all_arrivals
     source = GTFS::Source.build("/Users/Quincy_Iheme/Downloads/path_gtfs.zip")
+    binding.pry
 
     stops = source.stops
     arrivals = source.stop_times
