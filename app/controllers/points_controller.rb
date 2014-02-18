@@ -1,14 +1,10 @@
 class PointsController < ApplicationController
-  # def show
-  #   @arrivals = get_arrivals
-  # end
-
-  def stop_times
-    stop = :stop_form(params[:stop])
-    direction = :stop_form(params[:direction])
-    date = :stop_form(params[:date])
-    @arrivals = get_arrivals ( stop, direction, date )
-    render(:stops)
+  def show
+    @arrivals = get_arrivals( "Journal Square","inbound", "Mon-Fri")
+    arrive_times = []
+    @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
+    @sorted_times = arrive_times.sort
+    binding.pry
   end
 
   private
@@ -21,7 +17,8 @@ class PointsController < ApplicationController
     get_all_arrivals.select {|arrival| arrival[:stop] == stop}
             .select {|arrival| arrival[:direction] == direction}
             .select {|arrival| arrival[:date] == date}
-            .sort_by {|arrival| arrival[:arrival_time]} # FIXME not sorting, create user story
+# arrival_times = arrival_time_array.sort
+            # .sort_by {|arrival| arrival[:arrival_time]} # FIXME not sorting, create user story
   end
 
   def get_all_arrivals

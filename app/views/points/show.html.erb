@@ -2,7 +2,7 @@
 
 <h2> Journal Square inbound Mon-Fri</h2>
 <ul>
-  <% @arrivals.each do |arrival| %>
-  <li><%= arrival[:arrive_time] %></li>
-  <% end %>
+  <li>
+    <%= @sorted_times %>
+  </li>
 </ul>
