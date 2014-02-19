@@ -4,8 +4,8 @@ GothamMetro::Application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  get '/points', to: 'points#show'
-  post '/points', to: 'points#stop_times'
+  get 'stations', to: 'stations#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

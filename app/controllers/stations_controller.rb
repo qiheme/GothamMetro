@@ -1,11 +1,5 @@
-class PointsController < ApplicationController
-
-  def schedule
-    @schedule = @sorted_times
-  end
-
-
-  def show
+class StationsController < ApplicationController
+  def index
     @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
     arrive_times = []
     @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
@@ -68,8 +62,6 @@ class PointsController < ApplicationController
 
       all_stops_arrivals = all_stops_arrivals + current_stops_arrivals
     end
-    binding.pry
-
     return all_stops_arrivals
   end
 end
