@@ -1,1 +1,1 @@
-SCHEDULE = GTFS::Source.build("/Users/Quincy_Iheme/Downloads/path_gtfs.zip")
+SCHEDULE = GTFS::Source.build(File.join(Rails.root, "files", "path_gtfs.zip"))
