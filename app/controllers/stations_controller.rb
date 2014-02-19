@@ -19,11 +19,8 @@ class StationsController < ApplicationController
   end
 
   def get_all_arrivals
-    source = GTFS::Source.build("/Users/Quincy_Iheme/Downloads/path_gtfs.zip")
-
-
-    stops = source.stops
-    arrivals = source.stop_times
+    stops = SCHEDULE.stops
+    arrivals = SCHEDULE.stop_times
     all_stops_arrivals = []
 
     # iterate over the list of stops, and for each stop, select the list of
@@ -41,7 +38,7 @@ class StationsController < ApplicationController
         output[:arrive_time] = arrival.arrival_time
         output[:depart_time] = arrival.departure_time
         # grab the trip object from the source file with the same id as the current trip
-        trip = source.trips.find {|trip| trip.id == arrival.trip_id}
+        trip = SCHEDULE.trips.find {|trip| trip.id == arrival.trip_id}
 
         # set the arrivals date:
         case trip.service_id
