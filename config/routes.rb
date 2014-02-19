@@ -1,8 +1,9 @@
 GothamMetro::Application.routes.draw do
   get "sessions/new"
   get '/welcome', to: 'welcome#index'
-  get '/users/new', to: 'users#new'
-  post '/users', to: 'users#create'
+
+  resources :users, only: [:new, :create]
+
   get '/points', to: 'points#show'
   post '/points', to: 'points#stop_times'
   # The priority is based upon order of creation: first created -> highest priority.
