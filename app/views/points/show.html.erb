@@ -21,9 +21,9 @@
   ])) %>
 
 <%= label_tag :direction, "Direction" %>
-<%= select_tag(:direction, options_for_select([['inbound', 'inbound'], ['outbound', 'outbound']])) %>
+<%= select_tag(:direction, options_for_select([['Inbound', 'inbound'], ['Outbound', 'outbound']])) %>
 
-<%= label_tag :day, "Which" %>
+<%= label_tag :day, "Which Day" %>
 <%= select_tag(:day, options_for_select([['Mon-Fri', 'Mon-Fri'], ['Saturday', 'Saturday'], ['Sunday', 'Sunday'] ])) %>
 
 <%= submit_tag "Find Schedule" %>

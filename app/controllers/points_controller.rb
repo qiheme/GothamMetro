@@ -26,7 +26,7 @@ class PointsController < ApplicationController
 
   def get_all_arrivals
     source = GTFS::Source.build("/Users/Quincy_Iheme/Downloads/path_gtfs.zip")
-    binding.pry
+
 
     stops = source.stops
     arrivals = source.stop_times
@@ -46,7 +46,6 @@ class PointsController < ApplicationController
         output[:stop] = current_stops_name
         output[:arrive_time] = arrival.arrival_time
         output[:depart_time] = arrival.departure_time
-
         # grab the trip object from the source file with the same id as the current trip
         trip = source.trips.find {|trip| trip.id == arrival.trip_id}
 
@@ -69,6 +68,7 @@ class PointsController < ApplicationController
 
       all_stops_arrivals = all_stops_arrivals + current_stops_arrivals
     end
+    binding.pry
 
     return all_stops_arrivals
   end
