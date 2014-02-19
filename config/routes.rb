@@ -1,5 +1,8 @@
 GothamMetro::Application.routes.draw do
   get "sessions/new"
+  post "sessions", to: "sessions#create"
+  delete "sessions", to: "sessions#destroy"
+
   get '/welcome', to: 'welcome#index'
 
   resources :users, only: [:new, :create]

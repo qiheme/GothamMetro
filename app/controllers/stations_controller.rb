@@ -1,9 +1,15 @@
 class StationsController < ApplicationController
   def index
-    @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
-    arrive_times = []
-    @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
-    @sorted_times = arrive_times.sort
+    # Authorization!!!
+    if session[:user_id].nil?
+      redirect_to sessions_new_path
+    else
+      @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
+      arrive_times = []
+      @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
+      @sorted_times = arrive_times.sort
+      render :index
+    end
   end
 
   private
