@@ -5,9 +5,7 @@ class StationsController < ApplicationController
       redirect_to sessions_new_path
     else
       @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
-      arrive_times = []
-      @arrivals.each {|arrival| arrive_times << arrival[:arrive_time]}
-      @sorted_times = arrive_times.sort
+      @sorted_times = @arrivals.map { |arrival| arrival[:arrive_time]}.sort
       render :index
     end
   end
@@ -22,12 +20,15 @@ class StationsController < ApplicationController
     get_all_arrivals.select {|arrival| arrival[:stop] == stop}
             .select {|arrival| arrival[:direction] == direction}
             .select {|arrival| arrival[:date] == date}
+
   end
 
   def get_all_arrivals
     stops = SCHEDULE.stops
     arrivals = SCHEDULE.stop_times
     all_stops_arrivals = []
+
+
 
     # iterate over the list of stops, and for each stop, select the list of
     # arrival times for that stop from the list of ALL arrivals
