@@ -6,6 +6,8 @@ class StationsController < ApplicationController
     else
       @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
       @sorted_times = @arrivals.map { |arrival| arrival[:arrive_time]}.sort
+      binding.pry
+
       render :index
     end
   end
