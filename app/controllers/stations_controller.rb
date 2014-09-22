@@ -6,10 +6,13 @@ class StationsController < ApplicationController
     else
       @arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
       @sorted_times = @arrivals.map { |arrival| arrival[:arrive_time]}.sort
-      binding.pry
 
-      render :index
+      render :show
     end
+  end
+
+  def show
+
   end
 
   private
@@ -69,5 +72,62 @@ class StationsController < ApplicationController
       all_stops_arrivals = all_stops_arrivals + current_stops_arrivals
     end
     return all_stops_arrivals
+  end
+
+  def sort_arrivals
+    @sorted_times
+
+    @routes_to_display = []
+    # case [ Mon - Fri ]
+      nwk_wtc = ['Newark Penn Station', 'Harrison', 'Journal Square', 'Grove Street', 'Exchange Place', 'World Trade Center']
+      jsq_33rd = ['Journal Square', 'Grove Street', 'Newport', 'Christopher Street', '9th Street', '14th Street', '23rd Street', '33rd Street']
+      hob_33rd = ['Hoboken' 'Christopher Street', '9th Street', '14th Street', '23rd Street', '33rd Street']
+
+      # Look into ruby "for each and hashes"
+
+      # when nwk_wtc.include?(params(:stop))
+        # nwk_wtc_times = []
+        # nwk_wtc_times = @sorted_times.map do |routes|
+          # routes that include "Newark to World Trade Center"
+        # end
+        # @routes_to_display.push(nwk_wtc_times)
+      # end
+
+      # when jsq_33rd.include?(station)
+        # jsq_33rd_times = []
+        # jsq_33rd_times = @sorted_times.map do |routes|
+          # routes that include "Journal Square to 33rd Street"
+        # end
+        # @routes_to_display.push(jsq_33rd_times)
+      # end
+
+      # when hob_33rd.include?(station)
+        # hob_33rd_times = []
+        # hob_33rd_times = @sorted_times.map do |routes|
+          # routes that include "Hoboken to 33rd Street"
+        # end
+        # @routes_to_display.push(hob_33rd_times)
+      # end
+
+    # else
+      nwk_wtc = ['Newark Penn Station', 'Harrison', 'Journal Square', 'Grove Street', 'Exchange Place', 'World Trade Center']
+      nwk_hob_33rd = ['Newark Penn Station', 'Harrison', 'Journal Square', 'Newport', 'Hoboken' 'Christopher Street', '9th Street', '14th Street', '23rd Street', '33rd Street']
+
+      # when nwk_wtc.include?(params(:stop))
+        # nwk_wtc_times = []
+        # nwk_wtc_times = @sorted_times.map do |routes|
+          # routes that include "Newark to World Trade Center"
+        # end
+        # @routes_to_display.push(nwk_wtc_times)
+      # end
+
+      # when nwk_hob_33rd.include?(station)
+        # nwk_hob_33rd_times = []
+        # nwk_hob_33rd_times = @sorted_times.map do |routes|
+          # routes that include "Newark to 33rd Street via Hoboken"
+        # end
+        # @routes_to_display.push(nwk_hob_33rd_times)
+      # end
+    # end
   end
 end
