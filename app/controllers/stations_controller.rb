@@ -5,23 +5,23 @@ class StationsController < ApplicationController
       redirect_to sessions_new_path
     else
       arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
-      #out of the output hash, get the arrival time and route
+      # out of the output hash, get the arrival time and route
       times_routes = arrivals.map { |arrival| arrival[:arrive_time] + " " + arrival[:route].join }
-      #sort the time and route by arrival time
+      # sort the time and route by arrival time
       sorted_times = times_routes.sort
-      #split the string of time and route into seperate elements of their own array
+      # split the string of time and route into seperate elements of their own array
       times_routes_arr = sorted_times.map { |t| t.split }
-      #parse the first element of the new arrays into am and pm times
-      #and return a new array with am & pm times and routes
+      # parse the first element of the new arrays into am and pm times
+      # and return a new array with am & pm times and routes
       @sorted_timesandroutes = times_routes_arr.map do |time|
         if time.count == 5
-          Chronic.parse(time[0]).strftime("%l:%M%P") + " "+ time[1] + " " + time[2] + " " + time[3] + " " + time[4]
+          Chronic.parse(time[0]).strftime("%l:%M%P") + " " + time[1] + " " + time[2] + " " + time[3] + " " + time[4]
         elsif time.count == 6
-          Chronic.parse(time[0]).strftime("%l:%M%P") + " "+ time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5]
+          Chronic.parse(time[0]).strftime("%l:%M%P") + " " + time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5]
         elsif time.count == 7
-          Chronic.parse(time[0]).strftime("%l:%M%P") + " "+ time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5] + " " + time[6]
+          Chronic.parse(time[0]).strftime("%l:%M%P") + " " + time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5] + " " + time[6]
         elsif time.count == 8
-          Chronic.parse(time[0]).strftime("%l:%M%P") + " "+ time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5] + " " + time[6] + " "+ time[7]
+          Chronic.parse(time[0]).strftime("%l:%M%P") + " " + time[1] + " " + time[2] + " " + time[3] + " " + time[4] + " " + time[5] + " " + time[6] + " " + time[7]
         end
       end
 
@@ -101,9 +101,8 @@ class StationsController < ApplicationController
     end
     return all_stops_arrivals
   end
-end
 
-# def sort_arrivals
+#  def sort_arrivals
 #   @sorted_times
 
 #   @routes_to_display = []
@@ -159,3 +158,5 @@ end
 #     # end
 #   # end
 # end
+
+end
