@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+stops = SCHEDULE.stops.each do |stop|
+	Stop.create([{
+		code: stop.code,
+		desc: stop.desc,
+		stop_id: stop.id,
+		lat: stop.lat,
+		location_type: stop.location_type,
+		lon: stop.lon,
+		name: stop.name,
+		parent_station: stop.parent_station,
+		timezone: stop.timezone,
+		url: stop.url,
+		zone_id: stop.zone_id
+	}])
+end
