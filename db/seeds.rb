@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Stop.destroy_all
+Agency.destroy_all
+
 stops = SCHEDULE.stops.each do |stop|
 	Stop.create([{
 		code: stop.code,
@@ -19,5 +22,17 @@ stops = SCHEDULE.stops.each do |stop|
 		timezone: stop.timezone,
 		url: stop.url,
 		zone_id: stop.zone_id
+	}])
+end
+
+agencies = SCHEDULE.agencies.each do |agency|
+	Agency.create([{
+		fare_url: agency.fare_url,
+		agency_id: agency.id,
+		lang: agency.lang,
+		name: agency.name,
+		phone: agency.phone,
+		timezone: agency.timezone,
+		url: agency.url
 	}])
 end
