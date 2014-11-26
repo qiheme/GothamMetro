@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Agency:</strong>
+  <%= @route.agency_id %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @route.color %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @route.desc %>
+</p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @route.id %>
+</p>
+
+<p>
+  <strong>Long name:</strong>
+  <%= @route.long_name %>
+</p>
+
+<p>
+  <strong>Short name:</strong>
+  <%= @route.short_name %>
+</p>
+
+<p>
+  <strong>Text color:</strong>
+  <%= @route.text_color %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @route.type %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @route.url %>
+</p>
+
+<%= link_to 'Edit', edit_route_path(@route) %> |
+<%= link_to 'Back', routes_path %>

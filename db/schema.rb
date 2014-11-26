@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125020709) do
+ActiveRecord::Schema.define(version: 20141125162324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,21 @@ ActiveRecord::Schema.define(version: 20141125020709) do
     t.string   "name"
     t.string   "phone"
     t.string   "timezone"
-    t.text     "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "agency_url"
+  end
+
+  create_table "routes", force: true do |t|
+    t.string   "agency_id"
+    t.string   "color"
+    t.string   "desc"
+    t.string   "route_id"
+    t.string   "long_name"
+    t.string   "short_name"
+    t.string   "text_color"
+    t.string   "type"
+    t.text     "route_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,10 +52,10 @@ ActiveRecord::Schema.define(version: 20141125020709) do
     t.string   "name"
     t.string   "parent_station"
     t.string   "timezone"
-    t.text     "url"
     t.string   "zone_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "stop_url"
   end
 
   create_table "users", force: true do |t|

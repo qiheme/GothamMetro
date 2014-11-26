@@ -1,4 +1,16 @@
 GothamMetro::Application.routes.draw do
+  resources :fares
+
+  resources :calendar_dates
+
+  resources :shapes
+
+  resources :stop_times
+
+  resources :calendars
+
+  resources :routes
+
   get "sessions/new"
   post "sessions", to: "sessions#create"
   delete "sessions", to: "sessions#destroy"
