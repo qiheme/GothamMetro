@@ -14,6 +14,7 @@ Route.destroy_all
 Shape.destroy_all
 Stop.destroy_all
 StopTime.destroy_all
+Trip.destroy_all
 
 
 agencies = SCHEDULE.agencies.each do |agency|
@@ -122,5 +123,19 @@ stop_times = SCHEDULE.stop_times.each do |time|
 		pickup_type: time.pickup_type,
 		shape_dist_traveled: time.shape_dist_traveled,
 		stop_headsign: time.stop_headsign
+	}])
+end
+
+trips = SCHEDULE.trips.each do |trip|
+	Trip.create([{
+		bikes_allowed: trip.bikes_allowed,
+    block_id: trip.block_id,
+    direction_id: trip.direction_id,
+    headsign: trip.headsign,
+    trip_id: trip.id,
+    route_id: trip.route_id,
+    service_id: trip.service_id,
+    shape_id: trip.shape_id,
+    short_name: trip.short_name
 	}])
 end

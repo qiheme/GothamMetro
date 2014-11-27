@@ -1,4 +1,6 @@
 GothamMetro::Application.routes.draw do
+  resources :trips
+
   resources :fares
 
   resources :calendar_dates
