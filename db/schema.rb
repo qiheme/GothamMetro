@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141125162324) do
+ActiveRecord::Schema.define(version: 20141127043617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,42 @@ ActiveRecord::Schema.define(version: 20141125162324) do
     t.text     "agency_url"
   end
 
+  create_table "calendar_dates", force: true do |t|
+    t.string   "date"
+    t.string   "exception_type"
+    t.string   "service_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "calendars", force: true do |t|
+    t.string   "service_name"
+    t.string   "service_id"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "monday"
+    t.string   "tuesday"
+    t.string   "wednesday"
+    t.string   "thursday"
+    t.string   "friday"
+    t.string   "saturday"
+    t.string   "sunday"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fares", force: true do |t|
+    t.string   "agency_id"
+    t.string   "currency_type"
+    t.string   "fare_id"
+    t.string   "payment_method"
+    t.string   "price"
+    t.string   "transfer_duration"
+    t.string   "transfers"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "routes", force: true do |t|
     t.string   "agency_id"
     t.string   "color"
@@ -36,8 +72,32 @@ ActiveRecord::Schema.define(version: 20141125162324) do
     t.string   "long_name"
     t.string   "short_name"
     t.string   "text_color"
-    t.string   "type"
     t.text     "route_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "route_type"
+  end
+
+  create_table "shapes", force: true do |t|
+    t.string   "dist_traveled"
+    t.string   "shape_id"
+    t.string   "pt_lat"
+    t.string   "pt_lon"
+    t.string   "pt_sequence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "stop_times", force: true do |t|
+    t.string   "stop_id"
+    t.string   "trip_id"
+    t.string   "arrival_time"
+    t.string   "departure_time"
+    t.string   "stop_sequence"
+    t.string   "drop_off_type"
+    t.string   "pickup_type"
+    t.string   "shape_dist_traveled"
+    t.string   "stop_headsign"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
