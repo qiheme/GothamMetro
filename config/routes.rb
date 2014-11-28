@@ -13,6 +13,8 @@ GothamMetro::Application.routes.draw do
 
   resources :routes
 
+  resources :stops
+
   get "sessions/new"
   post "sessions", to: "sessions#create"
   delete "sessions", to: "sessions#destroy"

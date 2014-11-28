@@ -128,7 +128,6 @@ end
 
 trips = SCHEDULE.trips.each do |trip|
 	Trip.create([{
-		bikes_allowed: trip.bikes_allowed,
     block_id: trip.block_id,
     direction_id: trip.direction_id,
     headsign: trip.headsign,

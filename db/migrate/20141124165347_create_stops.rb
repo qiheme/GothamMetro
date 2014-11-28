@@ -3,7 +3,7 @@ class CreateStops < ActiveRecord::Migration
     create_table :stops do |t|
       t.string :code
       t.string :desc
-      t.string :train_id
+      t.string :stop_id
       t.string :lat
       t.string :location_type
       t.string :lon
