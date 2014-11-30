@@ -1,0 +1,8 @@
+<%= @stop.name %>
+
+<% @stop_times.where(stop_id: @stop.stop_id).order(:arrival_time).each do |time| %>
+	<ul>
+		<li><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></li>
+		<li><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></li>
+	</ul>
+<% end %>

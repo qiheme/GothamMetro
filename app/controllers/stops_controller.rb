@@ -5,5 +5,6 @@ class StopsController < ApplicationController
 
 	def show
 		@stop = Stop.find(params[:id])
+		@stop_times = StopTime.all
 	end
 end
