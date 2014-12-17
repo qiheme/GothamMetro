@@ -11,3 +11,4 @@ class StopTimesController < ApplicationController
   def show
     @stop_time = StopTime.find(params[:id])
   end
+end

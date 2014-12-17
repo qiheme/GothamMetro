@@ -1,9 +1,9 @@
 class StationsController < ApplicationController
   def index
     # Authorization!!!
-    if session[:user_id].nil?
-      redirect_to sessions_new_path
-    else
+    # if session[:user_id].nil?
+    #   redirect_to sessions_new_path
+    # else
       arrivals = get_arrivals( params[:stop] , params[:direction], params[:day])
       # out of the output hash, get the arrival time and route
       times_routes = arrivals.map { |arrival| arrival[:arrive_time] + " " + arrival[:route].join }
@@ -26,7 +26,7 @@ class StationsController < ApplicationController
       end
 
       render :index
-    end
+    # end
   end
 
   private
