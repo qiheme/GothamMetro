@@ -1,10 +1,12 @@
 <%= @stop.name %>
 
-<% @stop_times.where(stop_id: @stop.stop_id).order(:arrival_time).each do |time| %>
-	<ul>
-		<h5>Arrival Time</h5>
-		<li><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></li>
-		<h5>Departure Time</h5>
-		<li><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></li>
-	</ul>
-<% end %>
+<table>
+  <tr><td>Arrival Time</td><td>Departure Time</td></tr>
+  <% @stop_times.where(stop_id: @stop.stop_id).order(:arrival_time).each do |time| %>
+    <tr>
+    	<td id="arrival"><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></td>
+    	<td id="departure"><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></td>
+      <% stop_trips =  %>
+    </tr>
+  <% end %>
+</table>
