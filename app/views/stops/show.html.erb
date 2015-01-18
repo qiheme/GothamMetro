@@ -6,6 +6,13 @@
     <td>Departure Time</td>
     <td>Direction</td>
     <td>Route</td>
+    <td>Sunday</td>
+    <td>Monday</td>
+    <td>Tuesday</td>
+    <td>Wednesday</td>
+    <td>Thursday</td>
+    <td>Friday</td>
+    <td>Saturday</td>
   </tr>
   <% @stop_times.where(stop_id: @stop.stop_id).order(:arrival_time).each do |time| %>
     <tr>
@@ -21,6 +28,15 @@
 
       <% stop_route = Route.where(route_id: stop_trip.first.route_id) %>
       <td id="route"><%= stop_route.first.long_name %></td>
+
+      <% stop_day = Calendar.where(service_id: stop_trip.first.service_id) %>
+      <td id="Sunday"><%= stop_day.first.sunday %></td>
+      <td id="Monday"><%= stop_day.first.monday %></td>
+      <td id="Tuesday"><%= stop_day.first.tuesday %></td>
+      <td id="Wednesday"><%= stop_day.first.wednesday %></td>
+      <td id="Thursday"><%= stop_day.first.thursday %></td>
+      <td id="Friday"><%= stop_day.first.friday %></td>
+      <td id="Saturday"><%= stop_day.first.saturday %></td>
     </tr>
   <% end %>
 </table>
