@@ -16,7 +16,6 @@ Stop.destroy_all
 StopTime.destroy_all
 Trip.destroy_all
 
-
 agencies = SCHEDULE.agencies.each do |agency|
 	Agency.create([{
 		fare_url: agency.fare_url,
@@ -37,14 +36,25 @@ dates = SCHEDULE.calendar_dates.each do |date|
 	}])
 end
 
+# TODO - Change back instance variable logic when GTFS fix is implemented
+
 calendar = SCHEDULE.calendars.each do |calendar|
-		if calendar.service_id = "744A1674"
+	case calendar.service_id
+		when "744A2171"
 			day = "Mon-Friday"
-		elsif calendar.service_id = "745A1674"
+		when "745A2171"
 			day = "Saturday"
-		else
-			day = "Sunday"
-		end
+		when "746A2171"
+			day = "sunday"
+		when "955A2171"
+			day = "Sunday Archvive"
+		when "954A2171"
+			day = "Saturday Archive"
+		when "1205A2171"
+			day = "Mondays"
+		when "1206A2171"
+			day = "Tuesday-Friday"
+	end
 	Calendar.create([{
 		service_name: day,
 		service_id: calendar.service_id,
@@ -56,7 +66,7 @@ calendar = SCHEDULE.calendars.each do |calendar|
 		thursday: calendar.thursday,
 		friday: calendar.friday,
 		saturday: calendar.saturday,
-		sunday: calendar.sunday,
+		sunday: calendar.sunday
 	}])
 end
 
