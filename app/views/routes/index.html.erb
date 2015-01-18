@@ -1,0 +1,15 @@
+<!-- Severe performance issues...needs benchmarking and refactoring -->
+
+<% @routes.each do |route| %>
+  <li><%= link_to route.long_name, route_path(route.id) %></li>
+  <% route_trips = Trip.where(route_id: route.route_id) %>
+
+  <% route_stop_times = route_trips.map {|trip| StopTime.where(trip_id: trip.trip_id)}.flatten %>
+
+  <% route_stops = route_stop_times.map {|time| Stop.where(stop_id: time.stop_id)}.flatten.uniq %>
+  <ul>
+    <% route_stops.each do |stop| %>
+      <li><%= link_to stop.name, stop_path(stop.id) %></li>
+    <% end %>
+  </ul>
+<% end %>
