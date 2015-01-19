@@ -8,5 +8,6 @@ class RoutesController < ApplicationController
   # GET /routes/1
   # GET /routes/1.json
   def show
+    @route = Route.find(params[:id])
   end
 end

@@ -1,6 +1,4 @@
 class ShapesController < ApplicationController
-  before_action :set_shape, only: [:show, :edit, :update, :destroy]
-
   # GET /shapes
   # GET /shapes.json
   def index
