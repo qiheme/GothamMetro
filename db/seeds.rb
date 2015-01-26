@@ -45,7 +45,7 @@ calendar = SCHEDULE.calendars.each do |calendar|
 		when "745A2171"
 			day = "Saturday"
 		when "746A2171"
-			day = "sunday"
+			day = "Sunday"
 		when "955A2171"
 			day = "Sunday Archvive"
 		when "954A2171"
