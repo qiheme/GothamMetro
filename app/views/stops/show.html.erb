@@ -14,7 +14,7 @@
     <td>Friday</td>
     <td>Saturday</td>
   </tr>
-  <% @stop_times.where(stop_id: @stop.stop_id).order(:arrival_time).each do |time| %>
+  <% @stop.stop_times.order(:arrival_time).each do |time| %>
     <tr>
     	<td id="arrival"><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></td>
     	<td id="departure"><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></td>

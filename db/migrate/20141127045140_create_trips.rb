@@ -5,7 +5,7 @@ class CreateTrips < ActiveRecord::Migration
       t.string :block_id
       t.string :direction_id
       t.string :headsign
-      t.string :trip_id
+      t.integer :trip_id, :limit => 8
       t.string :route_id
       t.string :service_id
       t.string :shape_id

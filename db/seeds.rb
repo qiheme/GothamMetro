@@ -6,15 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Agency.destroy_all
-Calendar.destroy_all
-CalendarDate.destroy_all
-Fare.destroy_all
-Route.destroy_all
-Shape.destroy_all
-Stop.destroy_all
-StopTime.destroy_all
-Trip.destroy_all
+Agency.delete_all
+Calendar.delete_all
+CalendarDate.delete_all
+Fare.delete_all
+Route.delete_all
+Shape.delete_all
+Stop.delete_all
+StopTime.delete_all
+Trip.delete_all
 
 agencies = SCHEDULE.agencies.each do |agency|
 	Agency.create([{
@@ -100,7 +100,7 @@ stops = SCHEDULE.stops.each do |stop|
 	Stop.create([{
 		code: stop.code,
 		desc: stop.desc,
-		stop_id: stop.id,
+		stop_id: stop.id.hex,
 		lat: stop.lat,
 		location_type: stop.location_type,
 		lon: stop.lon,
@@ -124,8 +124,8 @@ end
 
 stop_times = SCHEDULE.stop_times.each do |time|
 	StopTime.create([{
-		stop_id: time.stop_id,
-		trip_id: time.trip_id,
+		stop_id: time.stop_id.hex,
+		trip_id: time.trip_id.hex,
 		arrival_time: time.arrival_time,
 		departure_time: time.departure_time,
 		stop_sequence: time.stop_sequence,
@@ -141,7 +141,7 @@ trips = SCHEDULE.trips.each do |trip|
     block_id: trip.block_id,
     direction_id: trip.direction_id,
     headsign: trip.headsign,
-    trip_id: trip.id,
+    trip_id: trip.id.hex,
     route_id: trip.route_id,
     service_id: trip.service_id,
     shape_id: trip.shape_id,
