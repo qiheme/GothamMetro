@@ -1,6 +1,8 @@
+<%= @route.agency.name %>
 <%= @route.long_name %>
 
-<% route_stops = @route.stop_times.map {|time| Stop.where(stop_id: time.stop_id)}.flatten.uniq %>
+<% route_stops = @route.route_stops %>
+
 <table>
   <tr>
     <% route_stops.each do |stop| %>
