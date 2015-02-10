@@ -1,4 +1,6 @@
 class Agency < ActiveRecord::Base
+include StopHelper
+  
 	has_many :routes, primary_key: :agency_id
   has_many :trips, through: :routes, primary_key: :agency_id
   has_many :stop_times, through: :trips, primary_key: :agency_id
