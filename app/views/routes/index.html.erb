@@ -1,9 +1,8 @@
 <% @routes.each do |route| %>
   <li><%= link_to route.long_name, route_path(route.id) %></li>
 
-  <% route_stops = route.stops %>
   <ul>
-    <% route_stops.each do |stop| %>
+    <% route.stops.each do |stop| %>
       <li><%= link_to stop.name, stop_path(stop.id) %></li>
     <% end %>
   </ul>

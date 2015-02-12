@@ -1,11 +1,9 @@
 <%= @route.agency.name %>
 <%= @route.long_name %>
 
-<% route_stops = @route.stops %>
-
 <table>
   <tr>
-    <% route_stops.each do |stop| %>
+    <% @route.stops.each do |stop| %>
       <td><%= link_to stop.name, stop_path(stop.id) %></td>
     <% end %>
   </tr>

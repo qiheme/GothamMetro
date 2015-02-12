@@ -1,11 +1,6 @@
 <li><%= @agency.name %></li>
 
-<% agency_routes = Route.where(agency_id: @agency.agency_id) %>
-<% agency_trips = Trip.where(route_id: agency_routes.map {|route| route.route_id}) %>
-<% agency_stoptimes = StopTime.where(trip_id: agency_trips.map{|trip| trip.trip_id}) %>
-<% agency_stops = Stop.where(stop_id: agency_stoptimes.map{|stop| stop.stop_id}) %>
-
-<% agency_stops.each do |stop| %>
+<% @agency.stops.each do |stop| %>
 
   <li><%= link_to stop.name, stop_path(stop.id) %></li>
 
