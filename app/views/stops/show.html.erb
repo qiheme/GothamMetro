@@ -19,24 +19,22 @@
     	<td id="arrival"><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></td>
     	<td id="departure"><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></td>
 
-      <% stop_trip = Trip.where(trip_id: time.trip_id) %>
-      <% if stop_trip.first.direction_id == "1" %>
+      <% if time.trip.direction_id == "1" %>
         <td id="direction">Inbound</td>
-      <% elsif stop_trip.first.direction_id == "0" %>
+      <% elsif time.trip.direction_id == "0" %>
         <td id="direction">Outbound</td>
       <% end %>
 
-      <% stop_route = Route.where(route_id: stop_trip.first.route_id) %>
-      <td id="route"><%= stop_route.first.long_name %></td>
+      <td id="route"><%= time.trip.route.long_name %></td>
 
-      <% stop_day = Calendar.where(service_id: stop_trip.first.service_id) %>
-      <td id="Sunday"><%= stop_day.first.sunday %></td>
-      <td id="Monday"><%= stop_day.first.monday %></td>
-      <td id="Tuesday"><%= stop_day.first.tuesday %></td>
-      <td id="Wednesday"><%= stop_day.first.wednesday %></td>
-      <td id="Thursday"><%= stop_day.first.thursday %></td>
-      <td id="Friday"><%= stop_day.first.friday %></td>
-      <td id="Saturday"><%= stop_day.first.saturday %></td>
+      <% stop_day = Calendar.find_by(service_id: time.trip.service_id) %>
+      <td id="Sunday"><%= stop_day.sunday %></td>
+      <td id="Monday"><%= stop_day.monday %></td>
+      <td id="Tuesday"><%= stop_day.tuesday %></td>
+      <td id="Wednesday"><%= stop_day.wednesday %></td>
+      <td id="Thursday"><%= stop_day.thursday %></td>
+      <td id="Friday"><%= stop_day.friday %></td>
+      <td id="Saturday"><%= stop_day.saturday %></td>
     </tr>
   <% end %>
 </table>
