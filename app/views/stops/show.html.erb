@@ -1,20 +1,31 @@
 <%= @stop.name %>
 
+<%= form_tag stop_path, method: "get" do %>
+  <%= label_tag :direction, "Direction" %>
+  <%= select_tag(:direction, options_for_select([['Inbound', '1'], ['Outbound', '0']])) %>
+
+  <%= label_tag :day, "Day" %>
+  <%= select_tag(:day, options_for_select([
+    ['Sunday', 'Sunday'],
+    ['Monday', 'Monday'],
+    ['Tuesday', 'Tuesday'],
+    ['Wednesday', 'Wednesday'],
+    ['Thursday', 'Thursday'],
+    ['Friday', 'Friday'],
+    ['Saturday', 'Saturday']])) %>
+
+  <%= submit_tag "Submit" %>
+<% end %>
+
 <table>
   <tr>
     <td>Arrival Time</td>
     <td>Departure Time</td>
     <td>Direction</td>
     <td>Route</td>
-    <td>Sunday</td>
-    <td>Monday</td>
-    <td>Tuesday</td>
-    <td>Wednesday</td>
-    <td>Thursday</td>
-    <td>Friday</td>
-    <td>Saturday</td>
   </tr>
-  <% @stop.stop_times.order(:arrival_time).each do |time| %>
+
+  <% @stop_times.each do |time| %>
     <tr>
     	<td id="arrival"><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></td>
     	<td id="departure"><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></td>
@@ -26,15 +37,6 @@
       <% end %>
 
       <td id="route"><%= time.trip.route.long_name %></td>
-
-      <% stop_day = Calendar.find_by(service_id: time.trip.service_id) %>
-      <td id="Sunday"><%= stop_day.sunday %></td>
-      <td id="Monday"><%= stop_day.monday %></td>
-      <td id="Tuesday"><%= stop_day.tuesday %></td>
-      <td id="Wednesday"><%= stop_day.wednesday %></td>
-      <td id="Thursday"><%= stop_day.thursday %></td>
-      <td id="Friday"><%= stop_day.friday %></td>
-      <td id="Saturday"><%= stop_day.saturday %></td>
     </tr>
   <% end %>
 </table>

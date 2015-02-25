@@ -9,4 +9,12 @@ class StopTime < ActiveRecord::Base
   def trip
     Trip.find_by(trip_id: self.trip_id)
   end
+
+  def service_id
+    self.trip.service_id
+  end
+
+  def direction_id
+    self.trip.direction_id
+  end
 end
