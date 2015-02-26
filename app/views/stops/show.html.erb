@@ -25,7 +25,7 @@
     <td>Route</td>
   </tr>
 
-  <% @stop_times.each do |time| %>
+  <% @stop_times.find_each do |time| %>
     <tr>
     	<td id="arrival"><%= Chronic.parse(time.arrival_time).strftime("%l:%M %P") %></td>
     	<td id="departure"><%= Chronic.parse(time.departure_time).strftime("%l:%M %P") %></td>
