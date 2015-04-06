@@ -11,22 +11,24 @@ class StopsController < ApplicationController
   private
 
   def stop_times(direction, day)
-    case day
-    when "Sunday"
-      services = Calendar.where(sunday: "1").map {|service| service.service_id}
-    when "Monday"
-      services = Calendar.where(monday: "1").map {|service| service.service_id}
-    when "Tuesday"
-      services = Calendar.where(tuesday: "1").map {|service| service.service_id}
-    when "Wednesday"
-      services = Calendar.where(wednesday: "1").map {|service| service.service_id}
-    when "Thursday"
-      services = Calendar.where(thursday: "1").map {|service| service.service_id}
-    when "Friday"
-      services = Calendar.where(friday: "1").map {|service| service.service_id}
-    when "Saturday"
-      services = Calendar.where(saturday: "1").map {|service| service.service_id}
-    end
+    services = Calendar.where(day => '1').map {|service| service.service_id}
+
+    # case day
+    # when "Sunday"
+    #   services = Calendar.where(sunday: "1").map {|service| service.service_id}
+    # when "Monday"
+    #   services = Calendar.where(monday: "1").map {|service| service.service_id}
+    # when "Tuesday"
+    #   services = Calendar.where(tuesday: "1").map {|service| service.service_id}
+    # when "Wednesday"
+    #   services = Calendar.where(wednesday: "1").map {|service| service.service_id}
+    # when "Thursday"
+    #   services = Calendar.where(thursday: "1").map {|service| service.service_id}
+    # when "Friday"
+    #   services = Calendar.where(friday: "1").map {|service| service.service_id}
+    # when "Saturday"
+    #   services = Calendar.where(saturday: "1").map {|service| service.service_id}
+    # end
 
     chosen_stop_trips = @stop.trips.where(direction_id: direction, service_id: services)
     StopTime.where(trip_id: chosen_stop_trips.collect {|trip| trip.trip_id})
