@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "agencies", force: true do |t|
+  create_table "agencies", force: :cascade do |t|
     t.text     "fare_url"
     t.string   "agency_id"
     t.string   "lang"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.text     "agency_url"
   end
 
-  create_table "calendar_dates", force: true do |t|
+  create_table "calendar_dates", force: :cascade do |t|
     t.string   "date"
     t.string   "exception_type"
     t.string   "service_id"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "calendars", force: true do |t|
+  create_table "calendars", force: :cascade do |t|
     t.string   "service_name"
     t.string   "service_id"
     t.string   "start_date"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "fares", force: true do |t|
+  create_table "fares", force: :cascade do |t|
     t.string   "agency_id"
     t.string   "currency_type"
     t.string   "fare_id"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "routes", force: true do |t|
+  create_table "routes", force: :cascade do |t|
     t.string   "agency_id"
     t.string   "color"
     t.string   "route_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.text     "desc"
   end
 
-  create_table "shapes", force: true do |t|
+  create_table "shapes", force: :cascade do |t|
     t.string   "dist_traveled"
     t.string   "shape_id"
     t.string   "pt_lat"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "stop_times", force: true do |t|
+  create_table "stop_times", force: :cascade do |t|
     t.integer  "stop_id",             limit: 8
     t.integer  "trip_id",             limit: 8
     t.string   "arrival_time"
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "stops", force: true do |t|
+  create_table "stops", force: :cascade do |t|
     t.string   "code"
     t.string   "desc"
     t.integer  "stop_id",        limit: 8
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.text     "stop_url"
   end
 
-  create_table "trips", force: true do |t|
+  create_table "trips", force: :cascade do |t|
     t.string   "block_id"
     t.string   "direction_id"
     t.string   "headsign"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
