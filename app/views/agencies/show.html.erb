@@ -1,5 +1,5 @@
 <li><%= @agency.name %></li>
 
-<% @agency.stops.each do |stop| %>
-  <li><%= link_to stop.name, stop_path(stop.id) %></li>
+<% @agency.routes.each do |route| %>
+  <li><%= link_to route.name, route_path(route.id) %></li>
 <% end %>
