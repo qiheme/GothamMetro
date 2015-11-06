@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
   end
 
   create_table "stop_times", force: :cascade do |t|
-    t.integer  "stop_id",             limit: 8
+    t.integer  "stop_id"
     t.integer  "trip_id",             limit: 8
     t.string   "arrival_time"
     t.string   "departure_time"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20141128190554) do
   create_table "stops", force: :cascade do |t|
     t.string   "code"
     t.string   "desc"
-    t.integer  "stop_id",        limit: 8
+    t.integer  "stop_id"
     t.string   "lat"
     t.string   "location_type"
     t.string   "lon"

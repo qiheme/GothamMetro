@@ -44,7 +44,7 @@ gem 'bcrypt'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'gtfs'
+gem 'gtfs', :git => 'git@github.com:qiheme/gtfs.git', :branch => 'path'
 
 group :development, :test do
   gem 'rspec-rails'

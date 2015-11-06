@@ -1,6 +1,6 @@
 class StopsController < ApplicationController
   def index
-  	@stops = Stop.all
+  	@stops = Stop.where(parent_station: nil)
   end
 
   def show

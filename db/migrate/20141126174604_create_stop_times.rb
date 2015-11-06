@@ -1,7 +1,7 @@
 class CreateStopTimes < ActiveRecord::Migration
   def change
     create_table :stop_times do |t|
-      t.integer :stop_id, :limit => 8
+      t.integer :stop_id
       t.integer :trip_id, :limit => 8
       t.string :arrival_time
       t.string :departure_time
