@@ -19,10 +19,11 @@ by Quincy Iheme
 ##User Stories Completed
 
 * As a user I should be able to check the PATH train schedule to determine which train I should take
-* As a user I should be able to Log In so I can check the schedules
+* As a user I should be able to check the routes of the PATH train
+* As a user I should be able to check the stops the PATH train serves
 
 ##Backlog
 
-A full list of user stories can be found by looking at this [Pivotal Tracker Project](https://www.pivotaltracker.com/s/projects/1015712)
+A full list of user stories can be found by looking at this [Trello Board](https://trello.com/b/atZ7Lt8f/gotham-metro)
 
 A link for Gotham Metro (http://gothammetro.herokuapp.com)
