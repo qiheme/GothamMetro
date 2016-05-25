@@ -28,5 +28,5 @@ A full list of user stories can be found by looking at this [Trello Board](https
 
 A link for Gotham Metro (http://gothammetro.herokuapp.com)
 
-You can find a live demo link <a href="http://jjj-jewelry-box.herokuapp.com/" target="_blank">here</a>. (demo user: jasmine / pass: 1234)
+You can find a live demo link http://jjj-jewelry-box.herokuapp.com/ . (demo user: jasmine / pass: 1234)
 
